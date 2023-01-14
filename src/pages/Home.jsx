@@ -84,13 +84,13 @@ function Home() {
           <img src={pix} alt="nature" className="w-full h-full" />
         </div>
         <div className="bg-gray-200 w-full h-[25%] flex flex-col items-center pr-10">
-          <div className="self-end h-64 flex flex-col items-start justify-center">
-            <div className="flex items-center gap-3">
-              <BsGithub className="text-gray-900 text-xl" />
-              <BsTwitter className="text-gray-900 text-xl" />
-              <BsLinkedin className="text-gray-900 text-xl" />
+          <div className="self-end h-64 flex justify-center gap-8">
+            <div className="flex items-center gap-5">
+              <BsGithub className="cursor-pointer text-gray-900 text-xl" />
+              <BsTwitter className="cursor-pointer text-gray-900 text-xl" />
+              <BsLinkedin className="cursor-pointer text-gray-900 text-xl" />
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 cursor-pointer">
               <p>Download CV</p>
               <BiDownload className="text-2xl text-gray-900" />
             </div>
