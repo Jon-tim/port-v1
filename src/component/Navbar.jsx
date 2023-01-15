@@ -1,12 +1,21 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { BiBriefcase, BiHome, BiNews } from "react-icons/bi";
+import { motion } from "framer-motion";
 function Navbar() {
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/");
   return (
-    <section className="h-16 w-[320px] p-[5px] bg-gray-600/30 mx-auto rounded-2xl absolute right-0 left-0 bottom-8">
+    <motion.section
+      drag="x"
+      //   dragSnapToOrigin={true}
+      dragConstraints={{ left: 0, right: 500 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeOut", duration: 2 }}
+      // initial={y: 100}
+      className="h-16 w-[320px] p-[5px] opacity-0 bg-gray-600/30 mx-auto rounded-2xl absolute right-0 left-0 bottom-8"
+    >
       <div className="flex items-center bg-gray-900  w-full h-full rounded-xl justify-around">
         <NavLink
           to="/"
@@ -24,7 +33,7 @@ function Navbar() {
           }`}
         >
           <BiBriefcase />
-          portfolio
+          projects
         </NavLink>
         <NavLink
           to="/blogs"
@@ -36,7 +45,7 @@ function Navbar() {
           blog
         </NavLink>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
