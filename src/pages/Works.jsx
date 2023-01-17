@@ -1,10 +1,22 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
 import SingleWork from "../component/SingleWork";
+import sanityClient from "../client";
 
 function Works() {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  const [projectData, setProjectData] = useState(null);
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == 'project']{
+      title, description, link
+    }`
+      )
+      .then((data) => setProjectData(data))
+      .catch(console.error);
+  }, []);
 
   return (
     <section className="h-screen w-screen flex items-center">
@@ -20,8 +32,13 @@ function Works() {
         <Navbar />
       </section>
       <section className="w-2/3 h-screen bg-white p-10 grid grid-cols-4 place-items-center">
-        {arr.map((single) => (
-          <SingleWork figure={single} key={single} />
+        {projectData?.map((project) => (
+          <SingleWork
+            title={project?.title}
+            desc={project?.description}
+            link={project?.link}
+            key={project?.title}
+          />
         ))}
       </section>
     </section>
