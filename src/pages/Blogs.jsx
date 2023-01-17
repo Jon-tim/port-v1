@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
-import SingleBlog from "../component/SingleBlog";
-import SanityClient from "../client";
+// import SingleBlog from "../component/SingleBlog";
+import sanityClient from "../client.js";
 import { Link } from "react-router-dom";
 
 function Blogs() {
   const [postData, setPostData] = useState(null);
 
   useEffect(() => {
-    SanityClient.fetch(
-      `*[-type == "post"]{
+    sanityClient
+      .fetch(
+        `*[_type == "post"]{
       title, slug, mainImage{
         asset->{
           _id, url
@@ -17,7 +18,7 @@ function Blogs() {
         alt
       }
     }`
-    )
+      )
       .then((data) => setPostData(data))
       .catch(console.error);
   }, []);
@@ -31,8 +32,8 @@ function Blogs() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {postData &&
             postData.map((post) => (
-              <article>
-                <Link to={"/post/" + post.slu.current} key={post.slug.current}>
+              <article key={post.slug.current}>
+                <Link to={"/blogs/" + post.slug.current}>
                   <span className="block h-64 relative rounded shadow leading-snug bg-white border-l-8 border-green-400">
                     <img
                       src={post.mainImage.asset.url}
