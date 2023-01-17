@@ -5,13 +5,12 @@ import SingleWork from "../component/SingleWork";
 import sanityClient from "../client";
 
 function Works() {
-
   const [projectData, setProjectData] = useState(null);
   useEffect(() => {
     sanityClient
       .fetch(
         `*[_type == 'project']{
-      title, description, link
+      title, description, link, githublink
     }`
       )
       .then((data) => setProjectData(data))
@@ -19,8 +18,8 @@ function Works() {
   }, []);
 
   return (
-    <section className="h-screen w-screen flex items-center">
-      <section className="h-full w-1/3 bg-gray-100 p-8 relative flex flex-col gap-4 items-center justify-center">
+    <section className="relative">
+      <section className=" h-screen w-1/3 bg-gray-100 p-8 flex flex-col gap-4 items-center justify-center fixed top-0 left-0">
         <h1 className="text-center text-5xl font-bold  uppercase">Works</h1>
         <p className="w-[350px] mx-auto text-justify">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam minima
@@ -31,15 +30,18 @@ function Works() {
         </p>
         <Navbar />
       </section>
-      <section className="w-2/3 h-screen bg-white p-10 grid grid-cols-4 place-items-center">
-        {projectData?.map((project) => (
-          <SingleWork
-            title={project?.title}
-            desc={project?.description}
-            link={project?.link}
-            key={project?.title}
-          />
-        ))}
+      <section className="w-[calc(100%-33.333%)] absolute right-0 h-full bg-white">
+        <div className="mx-auto w-full max-w-[95%] h-full p-5 grid grid-cols-workGrid place-items-center gap-8">
+          {projectData?.map((project) => (
+            <SingleWork
+              title={project?.title}
+              desc={project?.description}
+              link={project?.link}
+              key={project?.title}
+              github={project?.githublink}
+            />
+          ))}
+        </div>
       </section>
     </section>
   );

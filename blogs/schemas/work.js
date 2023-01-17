@@ -15,5 +15,9 @@ export default {
       name: 'link',
       type: 'url',
     },
+    {
+      name: 'githublink',
+      type: 'url',
+    },
   ],
 }

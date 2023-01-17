@@ -8,13 +8,13 @@ function Navbar() {
   const splitLocation = pathname.split("/");
   return (
     <motion.section
-      drag="x"
+      // drag="x"
       //   dragSnapToOrigin={true}
       dragConstraints={{ left: 0, right: 500 }}
       animate={{ opacity: 1 }}
-      transition={{ ease: "easeOut", duration: 2 }}
+      transition={{ ease: "easeOut", duration: 1 }}
       // initial={y: 100}
-      className="h-16 w-[320px] p-[5px] opacity-0 bg-gray-600/30 mx-auto rounded-2xl absolute right-0 left-0 bottom-8"
+      className="h-16 w-[320px] p-[5px] bg-gray-600/30 mx-auto rounded-2xl absolute right-0 left-0 bottom-8"
     >
       <div className="flex items-center bg-gray-900  w-full h-full rounded-xl justify-around">
         <NavLink

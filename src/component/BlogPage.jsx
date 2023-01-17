@@ -7,7 +7,7 @@ const builder = ImageUrlBuilder(sanityClient);
 function urlFor(source) {
   return builder.image(source);
 }
-function SingleBlog() {
+function BlogPage() {
   const [singlePost, setSinglePost] = useState(null);
   const { slug } = useParams();
   useEffect(() => {
@@ -62,4 +62,4 @@ function SingleBlog() {
   );
 }
 
-export default SingleBlog;
+export default BlogPage;

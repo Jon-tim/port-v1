@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
-// import SingleBlog from "../component/SingleBlog";
 import sanityClient from "../client.js";
-import { Link } from "react-router-dom";
 
+import Blog from "../component/Blog";
 function Blogs() {
   const [postData, setPostData] = useState(null);
 
@@ -23,33 +22,31 @@ function Blogs() {
       .catch(console.error);
   }, []);
   return (
-    <main className="bg-gray-600 min-h-screen p-12">
-      <section className="container mx-auto">
+    <main className="relative">
+      <section className="h-full w-1/3 bg-gray-100 p-8  flex flex-col gap-4 items-center justify-center fixed top-0 left-0">
         <h1 className="text-5xl flex justify-center">Blog Post Page</h1>
-        <h2 className="text-xl mb-12 flex justify-center">
-          Welcome to my page of blog posts
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <p className="w-[350px] mx-auto text-justify">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam minima
+          maxime quod ea praesentium hic aliquam earum eveniet nobis. Voluptas
+          ratione quidem necessitatibus harum fugit provident omnis nisi saepe
+          voluptates rem adipisci maxime perspiciatis porro nam, repellat
+          laudantium temporibus rerum!
+        </p>
+        <Navbar />
+      </section>
+      <section className="w-[calc(100%-33.333%)] absolute right-0 h-full bg-white">
+        <section className="mx-auto py-10 w-full h-full max-w-[85%] grid grid-cols-blogGrid place-items-center gap-10">
           {postData &&
             postData.map((post) => (
-              <article key={post.slug.current}>
-                <Link to={"/blogs/" + post.slug.current}>
-                  <span className="block h-64 relative rounded shadow leading-snug bg-white border-l-8 border-green-400">
-                    <img
-                      src={post.mainImage.asset.url}
-                      alt={post.mainImage.alt}
-                      className="w-full h-full rounded-r object-cover absolute"
-                    />
-                    <span className="relative h-full flex justify-end items-end pr-4">
-                      <h3 className="text-gray-800 px-3 placeholder-opacity-40 bg-red-700 bg-opacity-75">
-                        {post.title}
-                      </h3>
-                    </span>
-                  </span>
-                </Link>
-              </article>
+              <Blog
+                key={post?.slug.current}
+                linkto={post?.slug.current}
+                imgSrc={post?.mainImage.asset.url}
+                imgAlt={post?.mainImage.alt}
+                title={post?.title}
+              />
             ))}
-        </div>
+        </section>{" "}
       </section>
     </main>
   );
