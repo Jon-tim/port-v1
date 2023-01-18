@@ -36,7 +36,13 @@ function Blogs() {
       </section>
       <section className="w-[calc(100%-33.333%)] absolute right-0 h-full bg-white">
         <section className="mx-auto py-10 w-full h-full max-w-[85%] grid grid-cols-blogGrid place-items-center gap-10">
-          {postData &&
+          {postData === null ? (
+            <div className="w-4/5 h-4/5 grid place-items-center">
+              <p className="text-xl text-gray-900 text-center">
+                Loading... If it lasts more than 3 seconds, kindly refresh!
+              </p>
+            </div>
+          ) : (
             postData.map((post) => (
               <Blog
                 key={post?.slug.current}
@@ -45,7 +51,8 @@ function Blogs() {
                 imgAlt={post?.mainImage.alt}
                 title={post?.title}
               />
-            ))}
+            ))
+          )}
         </section>{" "}
       </section>
     </main>

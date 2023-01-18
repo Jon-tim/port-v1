@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         // homepage grid column configuration
-        workGrid: "repeat(auto-fit, minmax(150px, 1fr))",
+        workGrid: "repeat(auto-fit, minmax(120px, 1fr))",
         blogGrid: "repeat(auto-fit, minmax(150px, 1fr))",
       },
     },

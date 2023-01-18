@@ -3,23 +3,18 @@ import { NavLink, Link } from "react-router-dom";
 import {
   BiChevronLeft,
   BiChevronRight,
-  BiDownload,
   BiMenuAltRight,
   BiX,
 } from "react-icons/bi";
-import {
-  BsArrow90DegUp,
-  BsGithub,
-  BsLinkedin,
-  BsTwitter,
-} from "react-icons/bs";
+import { BsArrow90DegUp } from "react-icons/bs";
 import pix from "../assets/pexels.jpg";
+import Contact from "../component/Contact";
 function Home() {
   const [toggleNav, setToggle] = useState(false);
   const [seemore, setMore] = useState(false);
   return (
-    <section className="w-screen h-screen flex items-center">
-      <section className="w-1/2 h-full flex flex-col p-8 relative overflow-hidden">
+    <section className="w-screen h-full md:h-screen flex items-center flex-col lg:flex-row max-w-7xl mx-auto">
+      <section className="w-full lg:w-1/2 h-screen lg:h-full flex flex-col p-5 lg:p-8 relative lg:overflow-hidden">
         <div className="flex items-center justify-between relative">
           <h1 className="text-4xl">Logo</h1>
           <div
@@ -52,13 +47,13 @@ function Home() {
           </div>
         </div>
         <section>
-          <h1 className="capitalize mt-24 text-6xl font-bold text-center text-gray-300">
+          <h1 className="capitalize mt-24 text-3xl md:mt-24 md:text-6xl font-bold text-center text-gray-300">
             oluwatimilehin
           </h1>
-          <h1 className="uppercase text-8xl font-bold text-center text-gray-300">
+          <h1 className="uppercase text-5xl md:text-8xl font-bold text-center text-gray-300">
             awoniyi
           </h1>
-          <p className="text-justify w-[500px] mt-10 mx-auto">
+          <p className="text-justify max-w-[500px] lg:w-[500px] mt-10 mx-auto">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex laborum
             assumenda magnam facere nemo esse eum, quas dolor consequuntur
             libero, ratione recusandae dicta possimus tempore delectus eos
@@ -66,7 +61,7 @@ function Home() {
             possimus ducimus nesciunt quidem cupiditate illum atque? Qui maiores
             sequi voluptas doloribus consequuntur!
           </p>
-          <div className="flex justify-center items-center gap-1 w-44 mx-auto mt-10">
+          <div className="hidden lg:flex justify-center items-center gap-1 w-44 mx-auto mt-10">
             <span className="rounded-full border-4 border-gray-900 opacity-50 hover:opacity-100 mr-4">
               <BiChevronLeft className="cursor-pointer text-2xl text-gray-900" />
             </span>
@@ -78,32 +73,16 @@ function Home() {
             </span>
           </div>
         </section>
+        <div className="lg:hidden">
+          <Contact />
+        </div>
       </section>
-      <section className="w-1/2 h-full flex flex-col relative">
+      <section className="w-1/2 h-full hidden lg:flex flex-col relative">
         <div className="h-[75%]">
           <img src={pix} alt="nature" className="w-full h-full" />
         </div>
         <div className="bg-gray-200 w-full h-[25%] flex flex-col items-center pr-10">
-          <div className="self-end h-64 flex justify-center items-center gap-8">
-            <div className="flex items-center gap-5">
-              <a href="https://github.com/Jon-tim" target={"_blank"}>
-                <BsGithub className="cursor-pointer text-gray-900 opacity-50 hover:opacity-100 text-xl transition-opacity duration-300 ease-linear" />
-              </a>
-              <a href="https://twitter.com/Undefined_io" target={"_blank"}>
-                <BsTwitter className="cursor-pointer text-gray-900 text-xl opacity-50 hover:opacity-100 transition-opacity duration-300 ease-linear" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/oluwatimilehin-awoniyi/"
-                target={"_blank"}
-              >
-                <BsLinkedin className="cursor-pointer text-gray-900 text-xl opacity-50 hover:opacity-100 transition-opacity duration-300 ease-linear" />
-              </a>
-            </div>
-            <div className="p-2 rounded-lg flex items-center justify-center gap-3 transition-opacity duration-300 ease-linear cursor-pointer bg-gray-900  opacity-50 hover:opacity-100 active:opacity-100 text-white">
-              <p>Download CV</p>
-              <BiDownload className="text-xl" />
-            </div>
-          </div>
+          <Contact />
         </div>
         <div
           className={` bg-black absolute bottom-0 -left-8 z-50 w-[330px] transition-height duration-500 linear ${
